@@ -18,7 +18,6 @@ const resolvers = {
         return chats
       }
     },
-  
   Mutation: {
     sendMessage (_, { from, message }) {
       const chat = { id: chats.length + 1, from, message }
@@ -29,7 +28,6 @@ const resolvers = {
       return chat
     }
   },
-  
   Subscription: {
     messageSent: {
       subscribe: () => { return pubsub.asyncIterator(CHAT_CHANNEL) }
@@ -43,15 +41,12 @@ const typeDefs = gql `
     from: String!
     message: String!
   }
-
   type Query {
     chats: [Chat]
   }
-
   type Mutation {
     sendMessage(from: String!, message: String!): Chat
   }
-
   type Subscription {
     messageSent: Chat
   }
